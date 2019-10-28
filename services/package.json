@@ -1,7 +1,7 @@
 {
-  "name": "@widowmaker/services",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@zhigang1992/widowmaker",
+  "version": "1.0.9",
+  "private": false,
   "dependencies": {
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.6",
@@ -18,6 +18,12 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "UIExplore": "ts-node src/UIExplore.ts",
-    "build": "tsc"
-  }
+    "build": "rm -rf lib && tsc",
+    "prepublish": "yarn build && yarn workspace @widowmaker/client build && cp -r ../client/build lib/public"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts"
 }

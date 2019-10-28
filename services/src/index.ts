@@ -14,7 +14,7 @@ const start = (startFlow: (widow: Widowmaker) => Promise<void>) => {
   const app = express();
   app.use(fileUpload());
 
-  app.use(express.static(path.join(__dirname, "../../client/build")));
+  app.use(express.static(path.join(__dirname, "public")));
 
   const downloadDir = tmp.dirSync().name;
   app.use("/download", express.static(downloadDir));
