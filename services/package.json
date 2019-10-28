@@ -1,7 +1,13 @@
 {
   "name": "@zhigang1992/widowmaker",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": false,
+  "author": {
+    "email": "zhigang1992@gmail.com",
+    "name": "Kyle Fang",
+    "url": "https://github.com/zhigang1992"
+  },
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.6",
@@ -19,7 +25,7 @@
     "start": "ts-node src/index.ts",
     "UIExplore": "ts-node src/UIExplore.ts",
     "build": "rm -rf lib && tsc",
-    "prepublish": "yarn build && yarn workspace @widowmaker/client build && cp -r ../client/build lib/public"
+    "prepublish": "yarn build && yarn workspace client build && cp -r ../client/build lib/public"
   },
   "files": [
     "lib"

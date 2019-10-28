@@ -1,10 +1,5 @@
 {
   "name": "widowmaker",
-  "author": {
-    "email": "zhigang1992@gmail.com",
-    "name": "Kyle Fang",
-    "url": "https://github.com/zhigang1992"
-  },
   "version": "0.0.1",
   "private": true,
   "description": "Terminal app in browser",
