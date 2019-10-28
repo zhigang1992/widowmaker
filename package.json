@@ -1,0 +1,32 @@
+{
+  "name": "@zhigang1992/widowmaker",
+  "author": {
+    "email": "zhigang1992@gmail.com",
+    "name": "Kyle Fang",
+    "url": "https://github.com/zhigang1992"
+  },
+  "version": "1.0.9",
+  "private": true,
+  "description": "Terminal app in browser",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "client",
+      "services"
+    ]
+  },
+  "dependencies": {
+    "prettier": "^1.18.2"
+  },
+  "files": [
+    "services/lib",
+    "client/public"
+  ],
+  "scripts": {
+    "build": "yarn workspace @windowmaker/client build && yarn workspace @widowmaker/services build",
+    "prepublish": "yarn build",
+    "UIExplore": "yarn workspace @widowmaker/services UIExplore"
+  },
+  "main": "services/lib/index.js",
+  "types": "services/lib/index.d.ts"
+}
