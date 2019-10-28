@@ -2,9 +2,8 @@
 
 Server side driven UI
 
-Node code running in backend:
-
 ```javascript
+// Node code running in backend:
 const startWidowmaker = require("@zhigang1992/widowmaker").default;
 
 startWidowmaker(async w => {
