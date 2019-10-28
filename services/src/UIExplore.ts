@@ -13,7 +13,8 @@ startWidowmaker(async w => {
   w.show(`You selected ${command}`);
   const file = await w.askFile();
   w.show(`Your file has been saved to ${file}`);
-  await w.askCommands({ a: "Okay" });
+  await w.askCommands({ a: "Download" });
+  await w.downloadLocal(file);
   const { action, payload } = await w.showTable(
     {
       id: "ID",
@@ -33,4 +34,6 @@ startWidowmaker(async w => {
     }))
   );
   w.show(`You've selected ${action}, ${payload}`);
+  await w.askCommands({ a: "Done" });
+  w.clear();
 });

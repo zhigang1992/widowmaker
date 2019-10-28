@@ -14,7 +14,7 @@ const start = (startFlow: (widow: Widowmaker) => Promise<void>) => {
   const app = express();
   app.use(fileUpload());
 
-  app.use(express.static(path.join(__dirname, "public")));
+  app.use(express.static(path.join(__dirname, "../lib/public")));
 
   const downloadDir = tmp.dirSync().name;
   app.use("/download", express.static(downloadDir));
@@ -46,7 +46,9 @@ const start = (startFlow: (widow: Widowmaker) => Promise<void>) => {
     }
     const files = (req as any).files;
     const answerId = Object.keys(files)[0];
-    const { name } = tmp.fileSync();
+    const name = tmp.tmpNameSync({
+      postfix: path.extname(files[answerId].name)
+    });
     files[answerId].mv(name, () => {
       W.uploadEvent.emit(answerId, name);
     });

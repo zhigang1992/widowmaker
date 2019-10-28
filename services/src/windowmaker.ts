@@ -1,7 +1,8 @@
 import { Socket } from "socket.io";
-
 import events from "events";
 import { Answer, Message, AskTable, TableCell } from "./Model";
+import * as fs from "fs";
+import * as path from "path";
 
 export function randomString(length: number = 10) {
   const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz".split(
@@ -92,6 +93,24 @@ class Widowmaker {
       type: "download",
       url
     });
+  }
+
+  async downloadLocal(file: string) {
+    const link = await new Promise<string>((resolve, reject) => {
+      const downloadFileName = `${randomString()}.${path.extname(file)}`;
+      fs.copyFile(
+        file,
+        path.resolve(this.downloadDir, downloadFileName),
+        err => {
+          if (err != null) {
+            reject(err);
+          } else {
+            resolve(`/download/${downloadFileName}`);
+          }
+        }
+      );
+    });
+    this.download(link);
   }
 
   display(image: string) {
